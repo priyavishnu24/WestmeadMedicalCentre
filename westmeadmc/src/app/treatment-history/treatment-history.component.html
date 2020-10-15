@@ -1,0 +1,21 @@
+<h2>Treatment History</h2>
+<div id="treatmentDiv">
+    <mat-form-field appearance="fill" color="primary" *ngIf="isAdmin">
+        <mat-label>Patient Email Address</mat-label>
+        <input matInput [(ngModel)]="patientId" (blur)="onBlurLoadAppointments()">
+    </mat-form-field>
+    <div *ngFor="let appointment of appointments;" >
+        <mat-card class="treatment-card" *ngIf="appointment.treatment" class="card">
+            <mat-card-header>
+                <mat-card-title>{{appointment.appointmentTime}}</mat-card-title>
+                <mat-card-subtitle>{{appointment.doctor.lastName }}  {{appointment.doctor.firstName}} {{appointment.doctor.qualification}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+            {{appointment.treatment.comment}}
+            </mat-card-content>
+            <mat-card-actions>
+                <a target="_blank" [href]="getDocsURL(appointment.appointmentId, doc)" *ngFor="let doc of appointment.treatment.docs;">{{doc}}</a>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

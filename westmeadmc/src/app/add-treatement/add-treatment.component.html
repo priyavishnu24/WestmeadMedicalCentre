@@ -1,0 +1,25 @@
+<h2>Add Treatment</h2>
+<div class="commentsDialog">
+    <div class="cd-row">
+        <mat-icon> notes</mat-icon>
+        <mat-form-field appearance="fill" color="primary" class="textarea">
+            <mat-label class="label">Doctor's diagnosis</mat-label>
+            <textarea matInput [(ngModel)]="doctorComment"></textarea>
+        </mat-form-field>
+    </div>
+    <div class="cd-row">
+        <mat-icon>cloud_upload</mat-icon>
+        <input type="file" (change)="onFileSelected($event)" id="fileUpload" name="fileUpload" accept="image/*" multiple rows="5" cols="40"/>
+    </div>
+    <div>
+        <mat-checkbox  [(ngModel)]="revisit">Revisit</mat-checkbox>
+        <span *ngIf="revisit" style="padding-left:30px">on</span>
+        <mat-form-field appearance="fill" color="primary" *ngIf="revisit" style="padding-left:30px">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker1" disabled [(ngModel)]="revisitDate">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1 disabled="false" color="primary"></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <button mat-raised-button color="accent" (click)="saveTreatment()">Save</button>
+</div>

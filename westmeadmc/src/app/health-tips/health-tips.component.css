@@ -1,0 +1,11 @@
+h1{
+    text-align: center;
+}
+
+#health{
+    background-color: azure;
+}
+
+.health-tip{
+    margin-top: -12%;
+}

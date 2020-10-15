@@ -1,0 +1,32 @@
+<div class="loginPage">
+    <h1>Login</h1>
+
+    <div class="row">
+        <mat-icon>email</mat-icon>
+        <mat-form-field appearance="fill" color="accent">
+            <mat-label>E-mail</mat-label>
+            <input matInput [(ngModel)]="loginDTO.emailId">
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-icon>lock</mat-icon>
+        <mat-form-field appearance="fill" color="accent">
+            <mat-label>Password</mat-label>
+            <input matInput [(ngModel)]="loginDTO.password" type="password">
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-icon>account_box</mat-icon>
+        <mat-form-field appearance="fill" color="accent">
+            <mat-select [(value)]="userType">
+              <mat-option value="patient" >Patient</mat-option>
+              <mat-option value="doctor">Doctor</mat-option>
+              <mat-option value="admin">Admin</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="row lastrow">
+            <button mat-flat-button (click)="onCancel()" color="accent">Cancel</button>
+            <button mat-flat-button (click)="onSignIn()" color="accent">Login</button>
+    </div>
+</div>

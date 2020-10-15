@@ -1,0 +1,221 @@
+<div class="appointmentDiv">
+<mat-tab-group mat-align-tabs="start">
+    <mat-tab label="New Appointment">
+        <div class="tabContent">
+        <mat-horizontal-stepper linear #stepper>
+            <!-- #docregion editable -->
+            <mat-step >
+            <!-- #enddocregion editable -->
+                <form >
+            <!-- #docregion step-label -->
+                <ng-template matStepLabel>Choose a doctor</ng-template>
+            <!-- #enddocregion step-label -->
+                <div class="doctorContent">
+                <div class="column-one">
+                    <div class="row">
+                    <mat-form-field>
+                        <mat-label>Filter</mat-label>
+                        <input matInput  placeholder="Ex. Doctor Name" (keyup)="doctorApplyFilter($event)">
+                    </mat-form-field>
+                    </div>
+                    <div class="row">
+                        <mat-card class="doctor-photo-card">
+                            <mat-card-header>
+                                <mat-card-title *ngIf="!selectedDoctor.lastName">Select a doctor</mat-card-title>
+                                <mat-card-title *ngIf="selectedDoctor.lastName">Dr. {{selectedDoctor.lastName}} {{selectedDoctor.firstName}} </mat-card-title>
+                                <mat-card-subtitle>{{selectedDoctor.qualification}}</mat-card-subtitle>
+                              </mat-card-header>
+                            <mat-card-content>
+                                <img mat-card-image [src]="selectedDoctor.imageURL" alt="Photo of a selected doctor">
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <button mat-raised-button color="primary" matStepperNext >
+                                    Next
+                                    <mat-icon suffix>trending_flat</mat-icon>
+                                </button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                    
+                </div>
+                <div class="column-two">
+                <table mat-table [dataSource]="doctors" class="mat-elevation-z8">
+                    
+                    
+                    <ng-container matColumnDef="firstName">
+                        <th mat-header-cell *matHeaderCellDef> First Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="lastName">
+                        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="age">
+                        <th mat-header-cell *matHeaderCellDef> Age </th>
+                        <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="gender">
+                        <th mat-header-cell *matHeaderCellDef> Gender </th>
+                        <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="qualification">
+                        <th mat-header-cell *matHeaderCellDef> Qualification </th>
+                        <td mat-cell *matCellDef="let element"> {{element.qualification}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="experience">
+                        <th mat-header-cell *matHeaderCellDef> Experience </th>
+                        <td mat-cell *matCellDef="let element"> {{element.experience}}</td>
+                    </ng-container>
+                   
+    
+    
+                    <tr mat-header-row *matHeaderRowDef="doctorColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: doctorColumns;" (click)="onSelectDoctor(row)" [ngClass]="{hovered: row.hovered, highlighted: row.highlighted}" (mouseover)="row.hovered = true" (mouseout)="row.hovered = false"></tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                </div>
+                </div>
+                </form>
+            </mat-step>
+            <mat-step >
+               
+                <ng-template matStepLabel>Select date, time and reason</ng-template>
+                <div class="dateContent">
+                    <div class="column-one">
+                        <mat-form-field appearance="fill" color="primary">
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput [matDatepicker]="picker1" disabled [(ngModel)]="selectedDate" (dateChange)="onChangeDate()">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1 disabled="false" color="primary"></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" color="primary">
+                            <mat-label>Reason to visit doctor</mat-label>
+                            <textarea matInput [(ngModel)]="reason"></textarea>
+                        </mat-form-field>
+                        
+                    </div>
+                    <div class="column-two">
+                        <h3 color="accent" *ngIf="times && times.length == 0">Doctor is not available today. Pleae check on other dates</h3>
+                        <button mat-raised-button *ngFor="let time of times;" [disabled]="time.appointmentId" (click)="onSelectTime(time, true)" [color]="time.isSelected? 'accent' : ''" class="time">{{time.time.slice(0, 5)}}</button>
+                    </div>
+                </div>     
+                <div class="action">
+                    <button mat-raised-button matStepperPrevious color="primary">Back</button>
+                    <button mat-raised-button matStepperNext color="primary">Next</button>
+                </div>
+               
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Confirm and book appointment</ng-template>
+                <div class="finalStep">
+                    <div class="final-column-left">
+                        <mat-card class="confirm-doctor-photo-card">
+                            <mat-card-content>
+                                <img mat-card-image class="final-img" [src]="selectedDoctor.imageURL" alt="Photo of a selected doctor">
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                    <div class="final-column-right">
+                        <table>
+                            <tr *ngIf="isAdmin">
+                                <td class="title">Patient Id : </td>
+                                <td>
+                                    <mat-form-field appearance="fill" color="primary" >
+                                        <mat-label>Patient Email Address</mat-label>
+                                        <input matInput [(ngModel)]="patientId">
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">Doctor Name :</td>
+                                <td>{{selectedDoctor.firstName}} {{ selectedDoctor.lastName}}</td>
+                            </tr>
+                            <tr>
+                                <td class="title">Qualification :</td>
+                                <td>{{selectedDoctor.qualification}}</td>
+                            </tr>
+                            <tr>
+                                <td class="title">Date :</td>
+                                <td>{{getDateAsString(selectedDate)}}</td>
+                            </tr>
+                            <tr>
+                                <td class="title">Time :</td>
+                                <td>{{selectedTime.time.slice(0, 5)}}</td>
+                            </tr>
+                            <tr>
+                                <td class="title">Reason :</td>
+                                <td>{{reason}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <mat-checkbox class="agreeCB" [(ngModel)]="agreeCB">I agree to the <a (click)="openTermsAndConditions()">terms and conditions</a></mat-checkbox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><button mat-raised-button matStepperPrevious color="primary">Back</button></td>
+                                <td><button mat-raised-button color="primary" (click)= "bookAppointment()">Book Appointment</button></td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                </div>
+            </mat-step>
+            </mat-horizontal-stepper>
+        </div>
+    </mat-tab>
+    <mat-tab label="Appointment History">
+        <div class="tabContent">
+            <mat-form-field appearance="fill" color="primary" *ngIf="isAdmin">
+                <mat-label>Patient Email Address</mat-label>
+                <input matInput [(ngModel)]="patientId" (blur)="loadAppointmentHistory();">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Doctor Name" #input>
+              </mat-form-field>
+            <table mat-table [dataSource]="appointments" class="mat-elevation-z8">
+                <ng-container matColumnDef="index">
+                    <th mat-header-cell *matHeaderCellDef> Index </th>
+                    <td mat-cell *matCellDef="let element"> {{appointments.filteredData.indexOf(element) + 1}} </td>
+                  </ng-container>
+                  
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef> Date</th>
+                    <td mat-cell *matCellDef="let element"> {{getReadableDate(element.appointmentTime)}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="time">
+                    <th mat-header-cell *matHeaderCellDef> Time</th>
+                    <td mat-cell *matCellDef="let element"> {{getReadableTime(element.appointmentTime)}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="doctorName">
+                    <th mat-header-cell *matHeaderCellDef> Doctor Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.doctor.lastName }} {{element.doctor.firstName}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="reason">
+                    <th mat-header-cell *matHeaderCellDef> Reason for visit</th>
+                    <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> Cancel </th>
+                    <td mat-cell *matCellDef="let element"> 
+                        <button mat-mini-fab color="primary" *ngIf="isCancelAvailable(getReadableDate(element.appointmentTime))" (click) = "onCancelAppointment(element)">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="appointmentHistoryColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: appointmentHistoryColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+        
+    </mat-tab>
+</mat-tab-group>
+</div>

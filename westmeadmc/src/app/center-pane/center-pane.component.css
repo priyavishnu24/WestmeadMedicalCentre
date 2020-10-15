@@ -1,0 +1,17 @@
+#appointment{
+    text-align: center;
+    height: 39vh;
+}
+
+button{
+    background-color: #00adee;
+    color: white;
+}
+
+.home-description{
+    padding-top: 2%;
+}
+
+.center-pane{
+    margin-top: 10vh;
+}

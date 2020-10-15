@@ -1,0 +1,18 @@
+<div class="center-pane">
+<ng-image-slider #nav
+    [images]="imageObject"
+    [infinite]="true"
+    [autoSlide]="2"
+    [imageSize]="{width: '100%', height: 300}"
+    [animationSpeed]="2"
+    slideImage="1"></ng-image-slider> 
+
+<div id="appointment">
+    <h1>Welcome to Westmead Medical Centre</h1>
+    <button mat-raised-button (click)="bookAppointment()" *ngIf="!isDoctor">Book your appointments here</button>
+    <button mat-raised-button (click)="viewAppointments()" *ngIf="isDoctor">View Appointments</button>
+    <p class="home-description">Westmead Medical Centre is a major tertiary hospital in Sydney, Australia. Opened on 10 November 1978, the 975-bed hospital forms part of the Western Sydney Local Health District,[2] and is a teaching hospital of Sydney Medical School at the University of Sydney.
+The hospital serves a population of 1.85m people and is located on one of the largest health and hospital campuses in Australia.[3] In 2016/17, Westmead Hospital provided more than 1.5m occasions of care to outpatients, in addition to approximately 107,000 inpatients. Annually, there are over 21,000 medical operations, almost 5,800 births, and more than 75,000 presentations to emergency department.</p>
+</div>
+</div>
+

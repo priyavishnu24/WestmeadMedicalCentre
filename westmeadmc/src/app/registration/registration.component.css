@@ -1,0 +1,29 @@
+#registration{
+    background-color: #00adee;
+    display: grid;
+    color: white;
+}
+
+#registration h1 {
+    text-align: center;
+    padding-top: 5%;
+}
+
+.row {
+    padding-left: 10%;
+    width: 80%;
+    display: flex;
+}
+
+button {
+    margin-left: 20%;
+    
+}
+
+.lastrow {
+    padding-bottom: 10%;
+}
+
+.column {
+    width: 50%;
+}

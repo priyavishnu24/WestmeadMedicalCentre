@@ -1,0 +1,121 @@
+.appointmentDiv{
+    display: inline-block;
+    width: 100%;
+    margin-top: 10vh;
+}
+
+table {
+    width: 100%;
+}
+
+.tabContent {
+    width: 90%;
+    margin-left: 5%;
+}
+
+h1 {
+    text-align: center;
+    color: #3f51b5;
+}
+
+.mat-select-value {
+    color: black !important;
+}
+
+.column-one{
+    width:20%
+}
+.column-two{
+    width:80%
+}
+
+.doctorContent, .dateContent {
+    display:flex;
+}
+
+.row{
+    width: 100%;
+}
+
+.mat-row.hovered {
+    background: #eee;
+}
+  
+.mat-row.highlighted {
+    background: #999;
+}
+
+mat-icon{
+    color: white !important;
+}
+
+.doctor-photo-card{
+    width: 70%;
+}
+
+.mat-card-image:first-child {
+    margin-top: 0px !important;
+}
+
+.mat-card-header .mat-card-title {
+    font-size: 15px;
+}
+
+.mat-card-header-text{
+    margin: 0px !important;
+}
+
+.time{
+    margin-left:10%
+}
+
+.dateContent .column-two{
+    padding-top:2%
+}
+.dateContent .column-two button{
+    margin-top:2%
+}
+
+.dateShift, .mat-form-field-label, .dateShift .mat-select-value, .dateShift .mat-select-arrow{
+    color: black !important;
+}
+
+.final-column-left{
+    width: 50%;
+    float: left;
+}
+
+.final-column-right{
+    width: 50%;
+    float: right;
+}
+
+.final-img{
+    height: 300px !important;
+    width: 300px !important;
+}
+.confirm-doctor-photo-card{
+    width: 70%;
+    height : 50%
+}
+
+.title{
+    font-weight: bold;
+    width: 100px;
+}
+
+.final-column-right table tr td{
+    padding: 2%;
+}
+
+.final-column-right table tr td[colspan="2"]{
+    text-align: center;
+}
+
+.action button:last-child {
+    margin-left: 25px;
+}
+
+.column-two h3{
+    text-align: center;
+}

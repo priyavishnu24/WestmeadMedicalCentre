@@ -1,0 +1,18 @@
+.TermsAndConditionsDiv{
+    background-color: #00adee;
+    padding-bottom: 10px;
+}
+
+ul li{
+    color: #ff4081;
+    padding: 6px 0 !important;
+}
+ul li span{
+    color: white;
+}
+
+h3 {
+    text-align: center;
+    color: white;
+    text-decoration: underline;
+}

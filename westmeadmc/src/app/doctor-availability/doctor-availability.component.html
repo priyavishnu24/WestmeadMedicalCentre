@@ -1,0 +1,31 @@
+<h2>Add Doctor Availability</h2>
+<div class="doctorAvailabilityDiv">
+    <div class="availabilityRow">
+        <mat-form-field appearance="fill" color="primary" *ngIf="isAdmin">
+            <mat-label>Doctor Email Address</mat-label>
+            <input matInput [(ngModel)]="doctorId" (blur)="onBlurDoctorId()">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" color="primary">
+            <mat-label>Available Date</mat-label>
+            <input matInput [matDatepicker]="picker1" disabled [(ngModel)]="availableDate" (dateChange)="onChangeDate()">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1 disabled="false" color="primary"></mat-datepicker>
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill" color="primary" class="shift">
+            <mat-label>Shift</mat-label>
+            <mat-select [(ngModel)]="shiftType" (ngModelChange)="onShiftChange()">
+                <mat-option value="shift1" >Shift 1 (8:00 AM - 4:00 PM)</mat-option>
+                <mat-option value="shift2">Shift 2 (4:00 PM - 12:00 AM)</mat-option>
+                <mat-option value="shift3">Shift 3 (12:00 AM - 8:00 AM)</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="availabilityRow time-row">
+        <button mat-raised-button [disabled]="time.appointmentId" *ngFor="let time of times;" (click)="onTimeClick(time)" [color]="getColor(time)" class="time">{{time.time.slice(0, 5)}}</button>
+    </div>
+    <div class="availabilityRow">
+        <button mat-flat-button color="warn" class="action" (click)="addAvailability()">Add Availability</button>
+    </div>
+</div>

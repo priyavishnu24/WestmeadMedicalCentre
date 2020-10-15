@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-menu-below{
+    background-color: #00adee !important;
+}
+
+.mat-dialog-container {
+    padding: 0px !important;
+}
+
+.mat-form-field-label{
+    color: white;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label{
+    color: white;
+}
+.mat-form-field-ripple {
+    background-color: rgba(255,255,255,.87);
+}
+.mat-form-field-underline{
+    /*height: 1px;*/
+    background-color: white;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-underline::before {
+    background-color: white;
+}
+
+.mat-select-value {
+    color: white;
+}
+
+.mat-select-arrow {
+    color:white;
+}
+
+mat-icon{
+    color: white !important;
+}
+
+app-home {
+    display: inline-block;
+}
+
+.mat-menu-item .mat-icon-no-color, .mat-menu-item-submenu-trigger::after{
+    color: white !important;
+}
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    text-align: center !important;
+}

@@ -1,0 +1,40 @@
+.doctorAvailabilityDiv{
+    display: inline-block;
+    width: 100%;
+    height: 90vh;
+}
+
+h2 {
+    background-color: #f7f7f7 !important;
+    text-align: left;
+    padding-left: 2%;
+    margin-top: 10vh !important;
+}
+
+.availabilityRow {
+    width: 100%;
+    text-align: center;
+}
+
+.availabilityRow mat-form-field{
+    padding-left: 5%;
+}
+
+.mat-select-value, .mat-select-arrow, .mat-form-field-label{
+    color: black !important;
+}
+
+.time{
+    margin-left:5%;
+    margin-right:5%;
+    margin-top:2%;
+}
+
+.shift{
+    width: 20%;
+}
+
+.action{
+    margin-top: 5%
+}
+

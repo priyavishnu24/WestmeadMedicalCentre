@@ -1,0 +1,42 @@
+.manageAccount{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    height: 80vh;
+}
+h2 {
+    background-color: #f7f7f7 !important;
+    text-align: left;
+    padding-left: 2%;
+    margin-top: 10vh !important;
+}
+
+.ma-row {
+    margin-left: 25%;
+    width: 50%;
+    display: flex;
+}
+
+.mat-select-value {
+    color: black !important;
+}
+
+.mat-row.hovered {
+    background: #eee;
+}
+  
+.mat-row.highlighted {
+    background: #999;
+}
+
+.mat-form-field-label, .mat-select-value, .mat-select-arrow{
+    color: #3f51b5 !important;
+}
+
+.column {
+    width: 50%;
+}
+
+mat-icon{
+    color: #3f51b5 !important;
+}

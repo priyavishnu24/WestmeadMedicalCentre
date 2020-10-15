@@ -1,0 +1,21 @@
+.commentsDialog{
+    display: grid;
+}
+
+h2 {
+    background-color: #f7f7f7 !important;
+    text-align: left;
+    padding-left: 2%;
+}
+
+.label{
+    color: black;
+}
+
+.textarea{
+    width: 90% !important;
+}
+
+textarea{
+    height: 100px !important;
+}

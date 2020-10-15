@@ -1,0 +1,33 @@
+table {
+    width: 100%;
+    
+  }
+
+.approvalTable {
+    margin-top: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+h1 {
+    text-align: center;
+    color: #3f51b5;
+}
+
+.approveButton, .rejectButton {
+    margin-left: 10%;
+}
+
+.approvalDiv {
+    display: inline-block;
+    width: 100%;
+    height: 90vh;
+    margin-top: 10vh !important;
+}
+.mat-select-value {
+    color: black !important;
+}
+
+.icon{
+    color: #3f51b5 !important;
+}

@@ -1,0 +1,38 @@
+.viewAppointment{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    height: 80vh;
+}
+
+h2 {
+    background-color: #f7f7f7 !important;
+    text-align: left;
+    padding-left: 2%;
+    margin-top: 10vh !important;
+}
+
+.row-two{
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.appointmentTable{
+    width: 100%;
+}
+
+.mat-select-value {
+    color: black !important;
+}
+
+mat-icon{
+    color: #3f51b5 !important;
+}
+
+.mat-menu-above {
+    background-color: white !important;
+}
+
+.noRow{ 
+    color: #ff4081 !important;
+}

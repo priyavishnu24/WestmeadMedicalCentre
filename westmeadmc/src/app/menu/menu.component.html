@@ -1,0 +1,86 @@
+<img src="assets/images/logo.png" class="logo">
+<h1>WESTMEAD MEDICAL CENTRE</h1>
+
+
+<button mat-button [matMenuTriggerFor]="login" *ngIf="!isUserLoggedIn">
+    <mat-icon class="user">person</mat-icon>
+    Signup/SignIn
+</button>
+<mat-menu #login="matMenu" yPosition="below" >
+      <button mat-menu-item (click)="openLoginDialog()">
+        <mat-icon>lock_open</mat-icon>
+          Sign In
+        </button>
+      <button mat-menu-item [matMenuTriggerFor]="register" >
+        <mat-icon>assignment</mat-icon>
+          Sign Up/Register
+        </button>
+</mat-menu>
+<mat-menu #register="matMenu">
+  <button mat-menu-item (click)="openRegistrationDialog('admin')"> <mat-icon>font_download</mat-icon>Admin</button>
+  <button mat-menu-item (click)="openRegistrationDialog('doctor')"> <mat-icon>local_hospital</mat-icon>Doctor</button>
+  <button mat-menu-item (click)="openRegistrationDialog('patient')"> <mat-icon> local_hotel</mat-icon>Patient</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="userMenu" *ngIf="isUserLoggedIn">
+  <mat-icon class="user">person</mat-icon>
+  Hi, {{user.lastName}}
+</button>
+<mat-menu #userMenu="matMenu" yPosition="below" class="headerMenu">
+    
+    <button mat-menu-item routerLink="/appointment" *ngIf="userType == 'admin'">
+      <mat-icon>assignment</mat-icon>
+        Book Patient Appointment
+    </button>
+    <button mat-menu-item routerLink="/doctorAvailability" *ngIf="userType == 'admin'">
+      <mat-icon>add_alarm</mat-icon>
+        Add Doctor Availability
+    </button>
+    <button mat-menu-item routerLink="/adminApprovals" *ngIf="userType == 'admin'">
+      <mat-icon>how_to_reg</mat-icon>
+        Approvals
+    </button>
+    <button mat-menu-item routerLink="/appointment" *ngIf="userType == 'patient'">
+      <mat-icon>assignment</mat-icon>
+        Book Appointment
+    </button>
+    
+    <button mat-menu-item routerLink="/doctorAvailability" *ngIf="userType == 'doctor'">
+      <mat-icon>add_alarm</mat-icon>
+        Add Availability
+    </button>
+    <button mat-menu-item routerLink="/treatmentHistory" *ngIf="userType != 'doctor'">
+      <mat-icon>history</mat-icon>
+        <span>View treatment history</span>
+    </button>
+    <button mat-menu-item routerLink="/view-appointment" *ngIf="userType == 'doctor'">
+      <mat-icon>view_day</mat-icon>
+        View Appointment
+    </button>
+    <button mat-menu-item routerLink="/manage-account">
+        <mat-icon>settings</mat-icon>
+          Manage account
+    </button>
+    <button mat-menu-item (click)="onSignOut()">
+      <mat-icon>power_settings_new</mat-icon>
+        Sign out
+    </button>
+</mat-menu>
+<button mat-button routerLink="/left-pane">
+  Our Practice
+</button>
+<button mat-button routerLink="/right-pane">
+  Contact us
+</button>
+<button mat-button routerLink="/our-staff">
+  Our Doctors
+</button>
+<!--<button mat-button routerLink="/about-us">
+    About us
+</button> -->
+<button mat-button routerLink="/health-tips">
+    Health Tips
+</button>
+<button mat-button routerLink="/">
+  Home
+</button>

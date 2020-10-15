@@ -1,0 +1,26 @@
+.loginPage{
+    background-color: #00adee;
+    display: grid;
+    color: white;
+}
+
+.loginPage h1 {
+    text-align: center;
+    padding-top: 5%;
+}
+
+.row {
+    padding-left: 10%;
+    width: 80%;
+    display: flow-root;
+}
+
+button {
+    margin-left: 15%;
+    
+}
+
+.lastrow {
+    padding-bottom: 10%;
+}
+

@@ -1,0 +1,98 @@
+<div id="registration">
+    <h1>Register</h1>
+
+    <div class="row">
+        <div class="column">
+            <mat-icon>person</mat-icon>
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>First Name</mat-label>
+                <input matInput [(ngModel)]="user.firstName">
+            </mat-form-field>
+        </div>
+        <div class="column">
+            <mat-icon>person_outline</mat-icon>
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Last Name</mat-label>
+                <input matInput [(ngModel)]="user.lastName">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="userType != 'admin'">
+        <div class="column">
+            <mat-icon>accessibility_new</mat-icon>
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Age</mat-label>
+                <input matInput [(ngModel)]="user.age">
+            </mat-form-field>
+        </div>
+    
+        <div class="column">
+            <mat-icon>wc</mat-icon>
+            <mat-form-field appearance="fill" color="accent">
+                <mat-select [(value)]="user.gender">
+                  <mat-option value="male" >Male</mat-option>
+                  <mat-option value="female">Female</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <mat-icon>email</mat-icon>
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Email Id</mat-label>
+                <input matInput [(ngModel)]="user.emailId" type="email">
+            </mat-form-field>
+        </div>
+    
+        <div class="column">
+            <mat-icon>phone</mat-icon>
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Phone No</mat-label>
+                <input matInput [(ngModel)]="user.phoneNo" type="tel">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <mat-icon>lock</mat-icon>
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Password</mat-label>
+                <input matInput [(ngModel)]="user.password" type="password">
+            </mat-form-field>
+        </div>
+    
+        <div class="column">
+            <mat-icon>lock</mat-icon>
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput [(ngModel)]="confirmPassword" type="password">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row" *ngIf="userType=='doctor'">
+        <div class="column">
+            <mat-icon>class</mat-icon>
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Qualification</mat-label>
+                <input matInput [(ngModel)]="user.qualification" type="text">
+            </mat-form-field>
+        </div>
+    
+        <div class="column">
+            <mat-icon>trending_up</mat-icon>
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Experience</mat-label>
+                <input matInput [(ngModel)]="user.experience" type="number">
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row lastrow">
+        <button mat-flat-button (click)="onCancel()" color="accent">Cancel</button>
+        <button mat-flat-button (click)="onRegister()" color="accent">Register</button>
+    </div>
+</div>
